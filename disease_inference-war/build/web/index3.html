@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>MultiSelect Dialog Box</title>
+		
+		<style>
+		body{background:url("doc.jpg");color:black;background-attachment:fixed;font-color:white}
+		input,select {
+    background: #1A11A;
+    border-radius: 2em;
+    border: none;
+    margin: 1em;
+    padding: 0.7em;
+    color: #A2A2A2;
+    font-size: 1.1em;
+    padding-left: 1.5em;
+	outline: none;
+    box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%)
+
+}
+table{color:black;
+font-family:"Cooper Std";
+font-size:15px;
+}
+		
+		
+		</style>
+		
+		<script type="application/javascript" src="./js/jquery-2.2.2.min.js"></script>
+		<script type="application/javascript" src="./js/MSelectDBox.js"></script>
+		<script type="application/javascript">
+			$(document).ready(function(){
+
+				var eventLog = function(ctx, e){
+					var html = [
+						"name: " + ctx.get("name"),
+						"event.type: " + e.type
+					];
+					$(".events-plate").html(html.join("<br />"));
+				};
+
+				Math.rand = function(min,max){
+					return Math.floor(Math.random() * (max - min + 1)) + min;
+				};
+
+				$.prototype.mSelectDBox.prototype._globalStyles[".MSelectDBox__list-item_selected"]["background-color"] = "mediumseagreen";
+				$.prototype.mSelectDBox.prototype._globalStyles[".MSelectDBox__list-item_selected:hover, .MSelectDBox__list-item_selected.MSelectDBox__list-item_hover"]["background-color"] = "green";
+				$.prototype.mSelectDBox.prototype._globalStyles[".MSelectDBox__list-item:active, .MSelectDBox__list-item_selected:active"]["background-color"] = "darkgreen";
+
+
+				$("#msdb-a").mSelectDBox({
+					"list": (function(){
+						var arr = [];
+						for(var c=0; c<220; c++){
+							arr.push(Math.round(Math.random() * 1000000));
+						}
+						return arr;
+					})(),
+					"multiple": false,
+					"autoComplete": true,
+					"input:empty": eventLog,
+					"onselect": eventLog,
+					"name": "a"
+				});
+
+				$("#msdb-b").mSelectDBox({
+					"list": (function(){
+						var lib = "qwertyuiopasdfghjklzxcvbnm".split("");
+						var arr = [], str;
+						for(var c=0; c<12; c++){
+							str = "";
+							for(var v=0; v<8; v++){
+								str += lib[Math.rand(0, lib.length-1)];
+							}
+							arr.push(str);
+						}
+						return arr;
+					})(),
+					"builtInInput": 0,
+					"multiple": true,
+					"autoComplete": true,
+					"onkeydown": eventLog,
+					"input:empty": eventLog,
+					"name": "b"
+				});
+
+				$("#msdb-c").mSelectDBox({
+					"list": [
+							"Fever",
+							"Cough",
+							"Rashes",
+							"Cold",
+							"Head ache",
+							"Stomach ache",
+							
+					],
+					"builtInInput": 0,
+					"multiple": true,
+					"autoComplete": true,
+					"onkeydown": eventLog,
+					"input:empty": eventLog,
+					"name": "c",
+					"optionFilters": [
+						$.prototype.mSelectDBox.prototype.defaultOptionFilters.default,
+						$.prototype.mSelectDBox.prototype.defaultOptionFilters.russianKeyboard
+					]
+				});
+
+				
+
+			});
+		</script>
+	</head>
+ <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+	<center><b style=" font-size:25px;color:black; font-family:'Cooper Std'">Disease Inference System<br><br>
+        <b style=" font-size:18px;color:black; font-family:'Cooper Std'">DIAGNOSE DISEASE USING SYMPTOMS</center></b><br>
+        <br><br>
+        <form action="servlet3">
+       	<table width=110 align=center>
+            <tr><td><center style=" font-size:18px;color:BLACK; font-family:'Cooper Std'">PLEASE ENTER THE SYMPTOMS:<center><tr><td><input id="msdb-c" class="" type="text" name="textarea1" value="" size="50" placeholder="4 to 8 words separated by semi-colon"/>
+<br>
+<tr><td>
+<center><input type="submit" value="SUBMIT " style=" background: #7f7d87; color:black; font-family:'Cooper Std';font-size:20px"  /> </form>
+        
+
+	</body>
+</html>
+	

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Diseases Database</title>
+		<style>
+		body{background:url("doc.jpg");color:black;background-attachment:fixed;font-color:white}
+		input,select {
+    background: #1A11A;
+    border-radius: 2em;
+    border: none;
+    margin: 1em;
+    padding: 0.7em;
+    color: #A2A2A2;
+    font-size: 1.1em;
+    padding-left: 1.5em;
+	outline: none;
+    box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%)
+
+}
+table{color:black;
+font-family:"Cooper Std";
+font-size:15px;
+}
+		
+		</style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="servlet2">
+            <center><b style=" font-size:25px;color:black; font-family:'Cooper Std'">Disease Inference System<br><br>
+        <b style=" font-size:18px;color:black; font-family:'Cooper Std'">DISEASE DETAILS</center></b>
+			 
+			 <br>
+			 <table width=160 align=center>
+            <tr><td>
+                    NAME:<td><input type="text" name="textbox1" value=""/>
+           <tr> <td>SYMPTOMS:<td><input type="text" name="textbox2" value=""/>
+            <tr><td>CAUSE:<td><input type="text" name="textbox3" value=""/>
+            <tr><td>TEST TO BE CONDUCTED:<td><input type="text" name="textbox4" value=""/>
+            <tr><td>WEIGHT THE SYMPTOMS:<td><input type="text" name="textbox5" value=""/>
+            <tr><td>Minimum Threshold:<td><input type="text" name="textbox6" value=""/>
+            <tr><td>Maximum Threshold:<td><input type="text" name="textbox7" value=""/>
+            <tr><td>Catalyst Factor:<td><input type="text" name="textbox8" value=""/>
+                         </table>
+            <table width=30 align=center><tr><td>
+			<input type="submit" value="SUBMIT   " style=" background: #7f7d87; color:black; font-family:'Cooper Std'"/>
+            
+        </form>
+    </body>
+</html>
